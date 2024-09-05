@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:momhive/navigator.dart';
 
 class GroupsPage extends StatelessWidget {
   const GroupsPage({super.key});
@@ -6,125 +7,100 @@ class GroupsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Groups',
-      theme: ThemeData(
-        primaryColor: const Color(0xFFF7C843),
-        scaffoldBackgroundColor: Colors.white,
-        textTheme: TextTheme(
-          headlineSmall: TextStyle(
-            color: Colors.grey[800],
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
-          bodyMedium: TextStyle(
-            color: Colors.grey[800],
-            fontSize: 16,
-          ),
-          bodyLarge: TextStyle(
-            color: Colors.grey[800],
-            fontSize: 18,
-          ),
-        ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          iconTheme: IconThemeData(color: Colors.grey[800]),
-        ),
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: TextField(
-            decoration: InputDecoration(
-              hintText: 'Search groups...',
-              filled: true,
-              fillColor: const Color(0xFFF7C843),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-                borderSide: BorderSide.none,
-              ),
-              prefixIcon: const Icon(Icons.search, color: Colors.white),
+        title: 'Groups',
+        theme: ThemeData(
+          primaryColor: const Color(0xFFF7C843),
+          scaffoldBackgroundColor: Colors.white,
+          textTheme: TextTheme(
+            headlineSmall: TextStyle(
+              color: Colors.grey[800],
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
+            bodyMedium: TextStyle(
+              color: Colors.grey[800],
+              fontSize: 16,
+            ),
+            bodyLarge: TextStyle(
+              color: Colors.grey[800],
+              fontSize: 18,
             ),
           ),
-          centerTitle: true,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            iconTheme: IconThemeData(color: Colors.grey[800]),
+          ),
         ),
-        body: Column(
-          children: [
-            const TabBarWidget(),
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.all(16.0),
-                children: [
-                  GroupCard(
-                    title: 'Parenting Tips',
-                    description:
-                        'A group for sharing parenting tips and advice.',
-                    members: 150,
-                    color: Colors.blueAccent,
-                    onJoin: () {
-                      // Handle join action
-                    },
-                  ),
-                  GroupCard(
-                    title: 'Health & Wellness',
-                    description: 'Discuss health and wellness tips.',
-                    members: 200,
-                    color: Colors.green,
-                    onJoin: () {
-                      // Handle join action
-                    },
-                  ),
-                  GroupCard(
-                    title: 'Local Meetups',
-                    description: 'Find and join local meetups in your area.',
-                    members: 85,
-                    color: Colors.redAccent,
-                    onJoin: () {
-                      // Handle join action
-                    },
-                  ),
-                ],
+        home: Scaffold(
+          appBar: AppBar(
+            title: TextField(
+              decoration: InputDecoration(
+                hintText: 'Search groups...',
+                filled: true,
+                fillColor: const Color(0xFFF7C843),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide.none,
+                ),
+                prefixIcon: const Icon(Icons.search, color: Colors.white),
               ),
             ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: const Color(0xFFF7C843),
-          onPressed: () {
-            // Handle create new group action
-          },
-          child: const Icon(Icons.add),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: const Color(0xFFF7C843),
-          unselectedItemColor: Colors.grey,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.group),
-              label: 'Groups',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.event),
-              label: 'Events',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.library_books),
-              label: 'Library',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.message),
-              label: 'Messages',
-            ),
-          ],
-          onTap: (index) {
-            // Handle navigation tap
-          },
-        ),
-      ),
-    );
+            centerTitle: true,
+          ),
+          body: Column(
+            children: [
+              const TabBarWidget(),
+              Expanded(
+                child: ListView(
+                  padding: const EdgeInsets.all(16.0),
+                  children: [
+                    GroupCard(
+                      title: 'Parenting Tips',
+                      description:
+                          'A group for sharing parenting tips and advice.',
+                      members: 150,
+                      color: Colors.blueAccent,
+                      onJoin: () {
+                        // Handle join action
+                      },
+                    ),
+                    GroupCard(
+                      title: 'Health & Wellness',
+                      description: 'Discuss health and wellness tips.',
+                      members: 200,
+                      color: Colors.green,
+                      onJoin: () {
+                        // Handle join action
+                      },
+                    ),
+                    GroupCard(
+                      title: 'Local Meetups',
+                      description: 'Find and join local meetups in your area.',
+                      members: 85,
+                      color: Colors.redAccent,
+                      onJoin: () {
+                        // Handle join action
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: const Color(0xFFF7C843),
+            onPressed: () {
+              // Handle create new group action
+            },
+            child: const Icon(Icons.add),
+          ),
+          bottomNavigationBar: MyNavigationBar(
+            onTap: (index) {
+              navigateToPage(index, context);
+            },
+          ),
+        ));
   }
 }
 
@@ -228,4 +204,3 @@ class GroupCard extends StatelessWidget {
     );
   }
 }
-

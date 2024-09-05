@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'profile_page.dart';
+import 'home_page.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -18,6 +20,15 @@ class AccountSettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            );
+          },
+        ),
         title: const Text('Account Settings'),
         backgroundColor: Colors.yellow[600],
       ),
@@ -28,9 +39,14 @@ class AccountSettingsPage extends StatelessWidget {
             icon: Icons.person,
             title: 'Profile',
             onTap: () {
-              // Navigate to Profile settings page
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfilePage()),
+              );
             },
           ),
+
+          // Navigate to Profile settings page
           SettingsCard(
             icon: Icons.lock,
             title: 'Change Password',

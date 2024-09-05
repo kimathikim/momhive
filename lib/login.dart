@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signup.dart';
 import 'package:momhive/home_page.dart';
 import 'package:momhive/setting_page.dart';
 import 'package:momhive/profile_page.dart';
@@ -19,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEBD846),
+      backgroundColor: Colors.yellow[600],
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -95,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          const MessageDetailPage(contactName: "KIM")),
+                          const HomePage()), // Replace with your actual home page
                 );
               },
               child: const Text('Login'),
@@ -121,7 +122,12 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Handle sign up action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const SignUpPage()), // Replace with your actual sign up page
+                    );
                   },
                   child: const Text(
                     'Sign Up',

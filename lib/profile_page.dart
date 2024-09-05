@@ -23,16 +23,14 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         backgroundColor: Colors.yellow[600],
         elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () {
-              // Navigate to settings page
-            },
-          ),
-        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

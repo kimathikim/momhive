@@ -1,77 +1,96 @@
 import 'package:flutter/material.dart';
+import 'package:momhive/home_page.dart';
+import 'package:momhive/groups.dart';
+import 'package:momhive/event.dart';
+import 'package:momhive/resources.dart';
+import 'package:momhive/messages.dart';
 
-class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer({super.key});
+void navigateToPage(int index, BuildContext context) {
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) {
+        switch (index) {
+          case 0:
+            return const HomePage();
+          case 1:
+            return const GroupsPage();
+          case 2:
+            return const EventsPage();
+          case 3:
+            return const LibraryPage();
+          case 4:
+            return const MessagesPage();
+          default:
+            return const HomePage();
+        }
+      },
+    ),
+  );
+}
+
+class MyNavigationBar extends StatefulWidget {
+  final Function(int) onTap;
+
+  const MyNavigationBar({super.key, required this.onTap});
+
+  @override
+  _MyNavigationBarState createState() => _MyNavigationBarState();
+}
+
+class _MyNavigationBarState extends State<MyNavigationBar> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    widget.onTap(index);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.yellow[700],
-            ),
-            child: const Text(
-              'MomHive Menu',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
-            ),
+    return BottomNavigationBar(
+      selectedItemColor: Colors.blue,
+      unselectedItemColor: Colors.grey,
+      onTap: _onItemTapped,
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+            color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
           ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Home'),
-            onTap: () {
-              Navigator.pushNamed(context, '/');
-            },
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.group,
+            color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
           ),
-          ListTile(
-            leading: const Icon(Icons.group),
-            title: const Text('Groups'),
-            onTap: () {
-              Navigator.pushNamed(context, '/groups');
-            },
+          label: 'Groups',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.event,
+            color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
           ),
-          ListTile(
-            leading: const Icon(Icons.library_books),
-            title: const Text('Library'),
-            onTap: () {
-              Navigator.pushNamed(context, '/library');
-            },
+          label: 'Events',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.library_books,
+            color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
           ),
-          ListTile(
-            leading: const Icon(Icons.support),
-            title: const Text('Mentorship'),
-            onTap: () {
-              Navigator.pushNamed(context, '/mentorship');
-            },
+          label: 'Library',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.message,
+            color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
           ),
-          ListTile(
-            leading: const Icon(Icons.event),
-            title: const Text('Events'),
-            onTap: () {
-              Navigator.pushNamed(context, '/events');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.message),
-            title: const Text('Messages'),
-            onTap: () {
-              Navigator.pushNamed(context, '/messages');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
-            onTap: () {
-              Navigator.pushNamed(context, '/settings');
-            },
-          ),
-        ],
-      ),
+          label: 'Messages',
+        ),
+      ],
     );
   }
 }

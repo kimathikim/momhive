@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:momhive/navigator.dart';
 
 class MentoringPage extends StatelessWidget {
   const MentoringPage({super.key});
@@ -201,6 +202,36 @@ class MentoringPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.yellow[600],
+        unselectedItemColor: Colors.grey,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Groups',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.event),
+            label: 'Events',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_books),
+            label: 'Library',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: 'Messages',
+          ),
+        ],
+        onTap: (index) {
+          navigateToPage(
+              index, context); // Use the function from navigator.dart here
+        },
       ),
     );
   }
