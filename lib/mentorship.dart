@@ -165,7 +165,7 @@ class MentoringPage extends StatelessWidget {
                         radius: 30,
                         backgroundColor: Colors.grey[300],
                         backgroundImage: const AssetImage(
-                            'assets/avatar_placeholder.png'), // Use actual mentee's avatar
+                            'assets/momhive_logo.png'), // Use actual mentee's avatar
                       ),
                       title: const Text(
                         'Mentee Name',
@@ -202,36 +202,6 @@ class MentoringPage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.yellow[600],
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Groups',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.event),
-            label: 'Events',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            label: 'Library',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Messages',
-          ),
-        ],
-        onTap: (index) {
-          navigateToPage(
-              index, context); // Use the function from navigator.dart here
-        },
       ),
     );
   }

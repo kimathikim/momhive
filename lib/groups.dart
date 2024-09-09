@@ -95,11 +95,11 @@ class GroupsPage extends StatelessWidget {
             },
             child: const Icon(Icons.add),
           ),
-          bottomNavigationBar: MyNavigationBar(
-            onTap: (index) {
-              navigateToPage(index, context);
-            },
-          ),
+        bottomNavigationBar: MyNavigationBar(
+          onTap: (index) {
+            navigateToPage(index, context);
+          },
+        ),
         ));
   }
 }

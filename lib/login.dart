@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
-import 'package:momhive/home_page.dart';
-import 'package:momhive/setting_page.dart';
-import 'package:momhive/profile_page.dart';
-import 'package:momhive/mentorship.dart';
-import 'package:momhive/messages.dart';
-import 'package:momhive/message_detail.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -92,12 +86,7 @@ class _LoginPageState extends State<LoginPage> {
             // Login Button
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const HomePage()), // Replace with your actual home page
-                );
+                Navigator.pushReplacementNamed(context, '/main');
               },
               child: const Text('Login'),
             ),

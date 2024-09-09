@@ -11,15 +11,15 @@ void navigateToPage(int index, BuildContext context) {
     MaterialPageRoute(
       builder: (context) {
         switch (index) {
-          case 0:
-            return const HomePage();
           case 1:
-            return const GroupsPage();
+            return const HomePage();
           case 2:
-            return const EventsPage();
+            return const GroupsPage();
           case 3:
-            return const LibraryPage();
+            return const EventsPage();
           case 4:
+            return const LibraryPage();
+          case 5:
             return const MessagesPage();
           default:
             return const HomePage();
@@ -39,7 +39,7 @@ class MyNavigationBar extends StatefulWidget {
 }
 
 class _MyNavigationBarState extends State<MyNavigationBar> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -51,43 +51,29 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      selectedItemColor: Colors.blue,
+      currentIndex: _selectedIndex,
+      selectedItemColor: Colors.white,
       unselectedItemColor: Colors.grey,
       onTap: _onItemTapped,
-      items: <BottomNavigationBarItem>[
+      items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-            color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
-          ),
+          icon: Icon(Icons.home),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.group,
-            color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
-          ),
-          label: 'Groups',
+          icon: Icon(Icons.group),
+          label: 'Group',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.event,
-            color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
-          ),
+          icon: Icon(Icons.event),
           label: 'Events',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.library_books,
-            color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
-          ),
+          icon: Icon(Icons.library_books),
           label: 'Library',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.message,
-            color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
-          ),
+          icon: Icon(Icons.message),
           label: 'Messages',
         ),
       ],

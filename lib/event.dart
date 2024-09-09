@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:momhive/navigator.dart';
+import 'customnav.dart';
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});
@@ -22,11 +22,6 @@ class EventsPage extends StatelessWidget {
               date: 'August 5, 2024',
               location: 'Nakuru Park'),
         ],
-      ),
-      bottomNavigationBar: MyNavigationBar(
-        onTap: (index) {
-          navigateToPage(index, context);
-        },
       ),
     );
   }

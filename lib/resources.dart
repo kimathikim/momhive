@@ -94,11 +94,6 @@ class LibraryPage extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: MyNavigationBar(
-          onTap: (index) {
-            navigateToPage(index, context);
-          },
-        ),
       ),
     );
   }

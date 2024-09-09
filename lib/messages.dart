@@ -43,11 +43,6 @@ class MessagesPage extends StatelessWidget {
           },
           backgroundColor: const Color(0xFFF55200),
           child: const Icon(Icons.add, color: Colors.white)),
-      bottomNavigationBar: MyNavigationBar(
-        onTap: (index) {
-          navigateToPage(index, context);
-        },
-      ),
     );
   }
 }

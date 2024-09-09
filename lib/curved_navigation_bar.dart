@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'groups.dart';
-import 'resources.dart';
-import 'event.dart';
-import 'messages.dart';
+import 'home_page.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -32,20 +30,18 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       ],
       color: const Color(0xFFF7C843),
       buttonBackgroundColor: const Color(0xFFF5B000),
-      backgroundColor: Colors.transparent,
-      animationCurve: Curves.easeInOutSine
-      animationDuration: const Duration(milliseconds: 600),
       onTap: (index) {
         setState(() {
           _page = index;
         });
-        // Handle page changes
         switch (_page) {
           case 0:
-            Navigator.pushNamed(context, '/');
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HomePage()));
             break;
           case 1:
-            Navigator.pushNamed(context, '/groups');
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const GroupsPage()));
             break;
           case 2:
             Navigator.pushNamed(context, '/events');

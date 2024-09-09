@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:momhive/mainscreen.dart';
 import 'package:momhive/login.dart';
 
 void main() {
@@ -48,7 +49,11 @@ class MomHiveApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const LoginPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginPage(),
+        '/main': (context) => const MainScreen(),
+      },
     );
   }
 }
