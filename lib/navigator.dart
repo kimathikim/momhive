@@ -6,7 +6,7 @@ import 'package:momhive/resources.dart';
 import 'package:momhive/messages.dart';
 
 void navigateToPage(int index, BuildContext context) {
-  Navigator.pushReplacement(
+  Navigator.push(
     context,
     MaterialPageRoute(
       builder: (context) {
@@ -14,13 +14,17 @@ void navigateToPage(int index, BuildContext context) {
           case 1:
             return const HomePage();
           case 2:
-            return const GroupsPage();
+            return const GroupsPage(fromBottomNavBar: true);
           case 3:
-            return const EventsPage();
+            return const EventsPage(
+              fromBottomNavBar: true,
+            );
           case 4:
-            return const LibraryPage();
+            return const LibraryPage(
+              fromBottomNavBar: true,
+            );
           case 5:
-            return const MessagesPage();
+            return const MessagesPage(fromBottomNavBar: true);
           default:
             return const HomePage();
         }

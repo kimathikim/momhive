@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:momhive/navigator.dart';
-
-void main() {
-  runApp(const LibraryPage());
-}
 
 class LibraryPage extends StatelessWidget {
-  const LibraryPage({super.key});
+  final bool fromBottomNavBar;
+  const LibraryPage({super.key, this.fromBottomNavBar = true});
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +50,14 @@ class LibraryPage extends StatelessWidget {
               },
             ),
           ],
+          leading: fromBottomNavBar
+              ? null
+              : IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
         ),
         body: Column(
           children: [

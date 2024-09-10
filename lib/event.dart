@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
-import 'customnav.dart';
 
 class EventsPage extends StatelessWidget {
-  const EventsPage({super.key});
+  final bool fromBottomNavBar;
+
+  const EventsPage({super.key, this.fromBottomNavBar = true});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Upcoming Events'),
+        leading: fromBottomNavBar
+            ? null
+            : IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+        backgroundColor: Colors.yellow[600],
+        elevation: 0,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),

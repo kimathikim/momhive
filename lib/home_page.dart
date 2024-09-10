@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:momhive/setting_page.dart';
+import 'package:momhive/setting.dart';
 import 'package:momhive/mentorship.dart';
 import 'package:momhive/groups.dart';
 import 'package:momhive/resources.dart';
 import 'package:momhive/event.dart';
-
-import 'package:momhive/curved_navigation_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,32 +11,32 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MomHive',
-      theme: ThemeData(
-        primaryColor: Colors.black,
-        scaffoldBackgroundColor: Colors.white,
-        textTheme: TextTheme(
-          headlineSmall: TextStyle(
-            color: Colors.grey[800],
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
+        title: 'MomHive',
+        theme: ThemeData(
+          primaryColor: Colors.black,
+          scaffoldBackgroundColor: Colors.white,
+          textTheme: TextTheme(
+            headlineSmall: TextStyle(
+              color: Colors.grey[800],
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
+            bodyMedium: TextStyle(
+              color: Colors.grey[800],
+              fontSize: 16,
+            ),
+            bodyLarge: TextStyle(
+              color: Colors.grey[800],
+              fontSize: 18,
+            ),
           ),
-          bodyMedium: TextStyle(
-            color: Colors.grey[800],
-            fontSize: 16,
-          ),
-          bodyLarge: TextStyle(
-            color: Colors.grey[800],
-            fontSize: 18,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.yellow[600],
+            elevation: 0,
+            iconTheme: const IconThemeData(color: Colors.white),
           ),
         ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.yellow[600],
-          elevation: 0,
-          iconTheme: const IconThemeData(color: Colors.white),
-        ),
-      ),
-      home: Scaffold(
+        home: Scaffold(
           backgroundColor: Colors.white,
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(150),
@@ -68,9 +66,10 @@ class HomePage extends StatelessWidget {
                     icon: const Icon(Icons.settings),
                     onPressed: () {
                       Navigator.push(
-                        context, // context is used here
+                        context,
                         MaterialPageRoute(
-                            builder: (context) => const SettingPage()),
+                            builder: (context) =>
+                                const SettingsPage(fromBottomNavBar: true)),
                       );
                     },
                   ),
@@ -104,7 +103,7 @@ class HomePage extends StatelessWidget {
                         icon: Icons.group,
                         color: Colors.yellow[600]!,
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const GroupsPage()),
@@ -117,7 +116,7 @@ class HomePage extends StatelessWidget {
                         icon: Icons.library_books,
                         color: Colors.yellow[600]!,
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const LibraryPage()),
@@ -130,7 +129,7 @@ class HomePage extends StatelessWidget {
                         icon: Icons.school,
                         color: Colors.yellow[600]!,
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const MentoringPage()),
@@ -143,10 +142,11 @@ class HomePage extends StatelessWidget {
                         icon: Icons.event,
                         color: Colors.yellow[600]!,
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const EventsPage()),
+                                builder: (context) =>
+                                    const EventsPage(fromBottomNavBar: true)),
                           );
                         },
                       ),
@@ -170,7 +170,7 @@ class HomePage extends StatelessWidget {
                   Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const EventsPage()),
@@ -196,8 +196,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-    ));
-      
+        ));
   }
 }
 

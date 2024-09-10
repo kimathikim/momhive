@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
-import 'navigator.dart';
+import "message_detail.dart";
 
 class MessagesPage extends StatelessWidget {
-  const MessagesPage({super.key});
+  final bool fromBottomNavBar;
 
+  const MessagesPage({super.key, this.fromBottomNavBar = true});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFBFAF4),
       appBar: AppBar(
         title: const Text('Messages'),
+        leading: fromBottomNavBar
+            ? null
+            : IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
@@ -88,7 +97,12 @@ class MessageCard extends StatelessWidget {
                     )
                   : null,
               onTap: () {
-                // Navigate to message thread
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          MessageDetailPage(contactName: sender)),
+                );
               },
             )));
   }

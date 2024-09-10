@@ -21,6 +21,7 @@ class MessageDetailPage extends StatelessWidget {
               contactName,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
+                fontSize: 15,
                 color: Colors.white,
               ),
             ),
@@ -29,24 +30,18 @@ class MessageDetailPage extends StatelessWidget {
         backgroundColor: Colors.yellow[700],
         actions: [
           IconButton(
-            icon: const Icon(Icons.video_call, color: Colors.white),
-            onPressed: () {
-              // Implement video call functionality
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.call, color: Colors.white),
-            onPressed: () {
-              // Implement voice call functionality
-            },
-          ),
-          IconButton(
             icon: const Icon(Icons.more_vert, color: Colors.white),
             onPressed: () {
               // Implement more options here
             },
           ),
         ],
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Column(
         children: [

@@ -15,6 +15,12 @@ class MentoringPage extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         backgroundColor: Colors.yellow[700],
         actions: [
           IconButton(

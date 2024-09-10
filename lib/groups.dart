@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:momhive/navigator.dart';
 
 class GroupsPage extends StatelessWidget {
-  const GroupsPage({super.key});
+  final bool fromBottomNavBar;
+  const GroupsPage({super.key, this.fromBottomNavBar = true});
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +47,14 @@ class GroupsPage extends StatelessWidget {
               ),
             ),
             centerTitle: true,
+            leading: fromBottomNavBar
+                ? null
+                : IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
           ),
           body: Column(
             children: [
@@ -95,11 +103,6 @@ class GroupsPage extends StatelessWidget {
             },
             child: const Icon(Icons.add),
           ),
-        bottomNavigationBar: MyNavigationBar(
-          onTap: (index) {
-            navigateToPage(index, context);
-          },
-        ),
         ));
   }
 }

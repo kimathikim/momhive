@@ -2,18 +2,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  oooooooo
-  oooooooooooooooooo
-  o
-
-
-
-
-
-
-
-
-  i
   const CustomBottomNavigationBar({super.key});
 
   @override
